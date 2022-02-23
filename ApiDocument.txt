@@ -1,0 +1,33 @@
+Page 1
+1.list of city
+2.list of restro
+3.restro with respect city
+4.quicksearch(categories)
+
+
+page 2
+1.restro with respect to quicksearch
+
+filter
+     1.cuisine filter   
+         >data with respect to cuisine and quicksearch
+
+
+    2. cost filter 
+         >data with respect cuisine + cost
+
+    3. sort
+      >low to high
+      >high to low
+
+    4.pagination
+
+page 3
+   1.restro data 
+   2. Menu
+
+page 4
+    api to place order
+
+page 5
+    list of all orders
