@@ -1,0 +1,163 @@
+1. Install mongodb locally
+    https://www.mongodb.com/try/download/community
+
+2. Create a Folder in C Drive -- data
+
+    folder "data"
+            folder "db"
+
+3. mongod -- start server 
+   mongo  -- start shell
+
+4. start mongodb server 
+   C:\Program Files\MongoDB\Server\5.0\bin> mongod
+
+5. start mongodb shell
+   C:\Program Files\MongoDB\Server\5.0\bin> mongo
+
+6. How MongoDB Work
+    SQL                      NoSQL      
+    (MySQL)                  (mongoDB)
+
+    1. RDBMS                 1. Non-relational, document oriented database 
+                                management sytem
+
+    2. database              2. database
+
+    3. Table                 3. Collection
+
+    4. Row                   4. document
+
+    5. select                5. find
+
+    6. insert                6. insert
+
+    7. update                7. update
+
+    8. delete                8. delete
+
+
+sql 
+
+id    |    name    |    age  | Maths  |  Engish | Hindi
+1         vishal        20      80          90   
+2         rahul         21                  80      90
+3         arjun         22      80                  80
+
+
+
+
+NoSQL
+[
+    {
+        "_id":1,
+        "name":"vishal",
+        "age":20,
+        "math":80,
+        "english":90
+    },
+    {
+        "_id":2,
+        "name":"Rahul",
+        "age":22,
+        "english":80,
+        "Hindi":90
+    },
+    {
+        "_id":3,
+        "name":"Arjun",
+        "age":23,
+        "Maths":80,
+        "Hindi":90
+    },
+
+]
+
+
+check database
+> show dbs
+
+
+create database
+> use database_name
+
+select database
+> use database_name
+
+to check current database
+> db
+
+
+to create Collection
+> db.Collection_name.insert({})
+
+to check collections
+> db.collections
+
+
+to check all data
+>db.Collection_name.find();
+>db.Collection_name.find().pretty();
+
+to insert document
+>db.collection.insert(
+    {
+        ""_id" : 0, 
+        "name" : "Vijay", 
+        "age" : 23, 
+        "course" : "Full Stack"
+    }
+)
+
+to insert multiple records
+db.collection.insert([
+    {
+
+    },
+    {
+
+    },
+    {
+
+    }
+])
+
+READ data
+1. db.Collection_name.find()  -- for all data
+
+2. db.collection.find(query, projection)
+   ex: db.collection.find({course:"Full Stack"});
+  
+   ex: db.studentdata.find({course:"javascript"},{name:1})
+        { "_id" : 1, "name" : "Ajay" }
+        { "_id" : 3, "name" : "Rohi" }
+
+   ex: db.studentdata.find({course:"javascript"},{name:1,_id:0})
+        { "name" : "Ajay" }
+        { "name" : "Rohi" }
+
+ 
+   ex: 
+   db.studentdata.find({age:20})
+    { "_id" : 1, "name" : "Ajay", "age" : 20, "course" : "javascript" }
+    { "_id" : 3, "name" : "Rohi", "age" : 20, "course" : "javascript" }
+   
+   db.studentdata.find({age:20}).limit(1);
+    { "_id" : 1, "name" : "Ajay", "age" : 20, "course" : "javascript" }
+
+
+UPDATE QUERY
+1. for single update
+db.collection.update(<filter>,<update_value>);
+
+2. for multiple update
+db.collection.updateMany({course:"javascript"}, {$set:{course:"JavaScript"}})
+
+
+
+DELETE QUERY
+1. Delete Many
+db.studentdata.deleteMany({course:"JavaScript"})
+
+2. Delete one
+db.studentdata.deleteOne({course:"JavaScript"})
